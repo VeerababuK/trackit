@@ -1,0 +1,74 @@
+
+<div *ngIf="story">
+    <h2><span>Story</span> {{story.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Story Name</span></dt>
+        <dd>
+            <span>{{story.storyName}}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{story.description}}</span>
+        </dd>
+        <dt><span>State</span></dt>
+        <dd>
+            <span>{{story.state}}</span>
+        </dd>
+        <dt><span>Note</span></dt>
+        <dd>
+            <span>{{story.note}}</span>
+        </dd>
+        <dt><span>Feature</span></dt>
+        <dd>
+            <div *ngIf="story.featureId">
+                <a [routerLink]="['/feature-my-suffix', story.featureId]">{{story.featureId}}</a>
+            </div>
+        </dd>
+        <dt><span>Iteration</span></dt>
+        <dd>
+            <div *ngIf="story.iterationId">
+                <a [routerLink]="['/iteration-my-suffix', story.iterationId]">{{story.iterationId}}</a>
+            </div>
+        </dd>
+        <dt><span>Release X</span></dt>
+        <dd>
+            <div *ngIf="story.releaseXId">
+                <a [routerLink]="['/release-x-my-suffix', story.releaseXId]">{{story.releaseXId}}</a>
+            </div>
+        </dd>
+        <dt><span>Milestone</span></dt>
+        <dd>
+            <div *ngIf="story.milestoneId">
+                <a [routerLink]="['/milestone-my-suffix', story.milestoneId]">{{story.milestoneId}}</a>
+            </div>
+        </dd>
+        <dt><span>Story</span></dt>
+        <dd>
+            <div *ngIf="story.storyId">
+                <a [routerLink]="['/story-my-suffix', story.storyId]">{{story.storyId}}</a>
+            </div>
+        </dd>
+        <dt><span>Member</span></dt>
+        <dd>
+            <div *ngIf="story.memberId">
+                <a [routerLink]="['/member-my-suffix', story.memberId]">{{story.memberId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'story-my-suffix/'+ story.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

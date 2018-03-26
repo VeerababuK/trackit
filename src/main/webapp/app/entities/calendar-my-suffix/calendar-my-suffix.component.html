@@ -1,0 +1,68 @@
+<div>
+    <h2>
+        <span>Calendars</span>
+        <button class="btn btn-primary float-right jh-create-entity create-calendar-my-suffix" [routerLink]="['/', { outlets: { popup: ['calendar-my-suffix-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Calendar
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="calendars">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Date</span></th>
+            <th><span>Day</span></th>
+            <th><span>Weekend</span></th>
+            <th><span>Month</span></th>
+            <th><span>Year</span></th>
+            <th><span>Holiday</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let calendar of calendars ;trackBy: trackId">
+                <td><a [routerLink]="['../calendar-my-suffix', calendar.id ]">{{calendar.id}}</a></td>
+                <td>{{calendar.date | date:'medium'}}</td>
+                <td>{{calendar.day}}</td>
+                <td>{{calendar.weekend}}</td>
+                <td>{{calendar.month}}</td>
+                <td>{{calendar.year}}</td>
+                <td>{{calendar.holiday}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../calendar-my-suffix', calendar.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'calendar-my-suffix/'+ calendar.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'calendar-my-suffix/'+ calendar.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

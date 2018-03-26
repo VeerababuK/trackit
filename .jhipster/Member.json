@@ -1,0 +1,65 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "project",
+            "otherEntityName": "project",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "epics",
+            "otherEntityName": "epic",
+            "otherEntityRelationshipName": "member"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "features",
+            "otherEntityName": "feature",
+            "otherEntityRelationshipName": "member"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "stories",
+            "otherEntityName": "story",
+            "otherEntityRelationshipName": "member"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "tasks",
+            "otherEntityName": "task",
+            "otherEntityRelationshipName": "member"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "defects",
+            "otherEntityName": "defect",
+            "otherEntityRelationshipName": "member"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "memberName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "note",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180326150617",
+    "entityTableName": "member",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "mySuffix"
+}

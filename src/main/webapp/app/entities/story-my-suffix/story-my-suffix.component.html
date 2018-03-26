@@ -1,0 +1,108 @@
+<div>
+    <h2>
+        <span>Stories</span>
+        <button class="btn btn-primary float-right jh-create-entity create-story-my-suffix" [routerLink]="['/', { outlets: { popup: ['story-my-suffix-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Story
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="stories">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="storyName"><span>Story Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="description"><span>Description</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="state"><span>State</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="note"><span>Note</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="featureId"><span>Feature</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="iterationId"><span>Iteration</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="releaseXId"><span>Release X</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="milestoneId"><span>Milestone</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="storyId"><span>Story</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="memberId"><span>Member</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let story of stories ;trackBy: trackId">
+                <td><a [routerLink]="['../story-my-suffix', story.id ]">{{story.id}}</a></td>
+                <td>{{story.storyName}}</td>
+                <td>{{story.description}}</td>
+                <td>{{story.state}}</td>
+                <td>{{story.note}}</td>
+                <td>
+                    <div *ngIf="story.featureId">
+                        <a [routerLink]="['../feature-my-suffix', story.featureId  ]" >{{story.featureId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="story.iterationId">
+                        <a [routerLink]="['../iteration-my-suffix', story.iterationId  ]" >{{story.iterationId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="story.releaseXId">
+                        <a [routerLink]="['../release-x-my-suffix', story.releaseXId  ]" >{{story.releaseXId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="story.milestoneId">
+                        <a [routerLink]="['../milestone-my-suffix', story.milestoneId  ]" >{{story.milestoneId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="story.storyId">
+                        <a [routerLink]="['../story-my-suffix', story.storyId  ]" >{{story.storyId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="story.memberId">
+                        <a [routerLink]="['../member-my-suffix', story.memberId  ]" >{{story.memberId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../story-my-suffix', story.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'story-my-suffix/'+ story.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'story-my-suffix/'+ story.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="stories && stories.length">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="queryCount" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+        </div>
+    </div>
+</div>

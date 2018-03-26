@@ -1,0 +1,62 @@
+
+<div *ngIf="feature">
+    <h2><span>Feature</span> {{feature.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Feature Name</span></dt>
+        <dd>
+            <span>{{feature.featureName}}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{feature.description}}</span>
+        </dd>
+        <dt><span>State</span></dt>
+        <dd>
+            <span>{{feature.state}}</span>
+        </dd>
+        <dt><span>Note</span></dt>
+        <dd>
+            <span>{{feature.note}}</span>
+        </dd>
+        <dt><span>Epic</span></dt>
+        <dd>
+            <div *ngIf="feature.epicId">
+                <a [routerLink]="['/epic-my-suffix', feature.epicId]">{{feature.epicId}}</a>
+            </div>
+        </dd>
+        <dt><span>Milestone</span></dt>
+        <dd>
+            <div *ngIf="feature.milestoneId">
+                <a [routerLink]="['/milestone-my-suffix', feature.milestoneId]">{{feature.milestoneId}}</a>
+            </div>
+        </dd>
+        <dt><span>Release X</span></dt>
+        <dd>
+            <div *ngIf="feature.releaseXId">
+                <a [routerLink]="['/release-x-my-suffix', feature.releaseXId]">{{feature.releaseXId}}</a>
+            </div>
+        </dd>
+        <dt><span>Member</span></dt>
+        <dd>
+            <div *ngIf="feature.memberId">
+                <a [routerLink]="['/member-my-suffix', feature.memberId]">{{feature.memberId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'feature-my-suffix/'+ feature.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

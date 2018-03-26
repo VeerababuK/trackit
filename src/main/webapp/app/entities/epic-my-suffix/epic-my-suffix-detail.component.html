@@ -1,0 +1,56 @@
+
+<div *ngIf="epic">
+    <h2><span>Epic</span> {{epic.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Epic Name</span></dt>
+        <dd>
+            <span>{{epic.epicName}}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{epic.description}}</span>
+        </dd>
+        <dt><span>State</span></dt>
+        <dd>
+            <span>{{epic.state}}</span>
+        </dd>
+        <dt><span>Note</span></dt>
+        <dd>
+            <span>{{epic.note}}</span>
+        </dd>
+        <dt><span>Release X</span></dt>
+        <dd>
+            <div *ngIf="epic.releaseXId">
+                <a [routerLink]="['/release-x-my-suffix', epic.releaseXId]">{{epic.releaseXId}}</a>
+            </div>
+        </dd>
+        <dt><span>Milestone</span></dt>
+        <dd>
+            <div *ngIf="epic.milestoneId">
+                <a [routerLink]="['/milestone-my-suffix', epic.milestoneId]">{{epic.milestoneId}}</a>
+            </div>
+        </dd>
+        <dt><span>Member</span></dt>
+        <dd>
+            <div *ngIf="epic.memberId">
+                <a [routerLink]="['/member-my-suffix', epic.memberId]">{{epic.memberId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'epic-my-suffix/'+ epic.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

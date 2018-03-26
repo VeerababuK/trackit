@@ -1,0 +1,82 @@
+<div>
+    <h2>
+        <span>Discussions</span>
+        <button class="btn btn-primary float-right jh-create-entity create-discussion-my-suffix" [routerLink]="['/', { outlets: { popup: ['discussion-my-suffix-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span >
+            Create new Discussion
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="discussions">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Discussion Text</span></th>
+            <th><span>Epic</span></th>
+            <th><span>Story</span></th>
+            <th><span>Task</span></th>
+            <th><span>Defect</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let discussion of discussions ;trackBy: trackId">
+                <td><a [routerLink]="['../discussion-my-suffix', discussion.id ]">{{discussion.id}}</a></td>
+                <td>{{discussion.discussionText}}</td>
+                <td>
+                    <div *ngIf="discussion.epicId">
+                        <a [routerLink]="['../epic-my-suffix', discussion.epicId  ]" >{{discussion.epicId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="discussion.storyId">
+                        <a [routerLink]="['../story-my-suffix', discussion.storyId  ]" >{{discussion.storyId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="discussion.taskId">
+                        <a [routerLink]="['../task-my-suffix', discussion.taskId  ]" >{{discussion.taskId}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="discussion.defectId">
+                        <a [routerLink]="['../defect-my-suffix', discussion.defectId  ]" >{{discussion.defectId}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../discussion-my-suffix', discussion.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'discussion-my-suffix/'+ discussion.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'discussion-my-suffix/'+ discussion.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

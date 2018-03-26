@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Epic.
+    -->
+    <changeSet id="20180326150611-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="releasex_id"
+                                 baseTableName="epic"
+                                 constraintName="fk_epic_releasex_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="release_x"/>
+
+        <addForeignKeyConstraint baseColumnNames="milestone_id"
+                                 baseTableName="epic"
+                                 constraintName="fk_epic_milestone_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="milestone"/>
+
+        <addForeignKeyConstraint baseColumnNames="member_id"
+                                 baseTableName="epic"
+                                 constraintName="fk_epic_member_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="member"/>
+
+    </changeSet>
+</databaseChangeLog>

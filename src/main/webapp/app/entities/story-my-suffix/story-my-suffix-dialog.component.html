@@ -1,0 +1,93 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myStoryLabel">Create or edit a Story</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!story.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="story.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_storyName">Story Name</label>
+            <input type="text" class="form-control" name="storyName" id="field_storyName"
+                [(ngModel)]="story.storyName" required/>
+            <div [hidden]="!(editForm.controls.storyName?.dirty && editForm.controls.storyName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.storyName?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="story.description" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_state">State</label>
+            <input type="text" class="form-control" name="state" id="field_state"
+                [(ngModel)]="story.state" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_note">Note</label>
+            <input type="text" class="form-control" name="note" id="field_note"
+                [(ngModel)]="story.note" />
+        </div>
+
+        <div class="form-group">
+            <label class="form-control-label" for="field_feature">Feature</label>
+            <select class="form-control" id="field_feature" name="feature" [(ngModel)]="story.featureId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="featureOption.id" *ngFor="let featureOption of features; trackBy: trackFeatureById">{{featureOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_iteration">Iteration</label>
+            <select class="form-control" id="field_iteration" name="iteration" [(ngModel)]="story.iterationId">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="iterationOption.id" *ngFor="let iterationOption of iterations; trackBy: trackIterationById">{{iterationOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_releaseX">Release X</label>
+            <select class="form-control" id="field_releaseX" name="releaseX" [(ngModel)]="story.releaseXId">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="releaseXOption.id" *ngFor="let releaseXOption of releasexes; trackBy: trackReleaseXById">{{releaseXOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_milestone">Milestone</label>
+            <select class="form-control" id="field_milestone" name="milestone" [(ngModel)]="story.milestoneId">
+                <option [ngValue]="null"></option>
+                <option [ngValue]="milestoneOption.id" *ngFor="let milestoneOption of milestones; trackBy: trackMilestoneById">{{milestoneOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_story">Story</label>
+            <select class="form-control" id="field_story" name="story" [(ngModel)]="story.storyId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="storyOption.id" *ngFor="let storyOption of stories; trackBy: trackStoryById">{{storyOption.id}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_member">Member</label>
+            <select class="form-control" id="field_member" name="member" [(ngModel)]="story.memberId" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="memberOption.id" *ngFor="let memberOption of members; trackBy: trackMemberById">{{memberOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

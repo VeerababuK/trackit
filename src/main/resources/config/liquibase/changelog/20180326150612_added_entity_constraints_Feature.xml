@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Feature.
+    -->
+    <changeSet id="20180326150612-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="epic_id"
+                                 baseTableName="feature"
+                                 constraintName="fk_feature_epic_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="epic"/>
+
+        <addForeignKeyConstraint baseColumnNames="milestone_id"
+                                 baseTableName="feature"
+                                 constraintName="fk_feature_milestone_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="milestone"/>
+
+        <addForeignKeyConstraint baseColumnNames="releasex_id"
+                                 baseTableName="feature"
+                                 constraintName="fk_feature_releasex_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="release_x"/>
+
+        <addForeignKeyConstraint baseColumnNames="member_id"
+                                 baseTableName="feature"
+                                 constraintName="fk_feature_member_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="member"/>
+
+    </changeSet>
+</databaseChangeLog>

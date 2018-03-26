@@ -42,6 +42,37 @@ public class CacheConfiguration {
             cm.createCache(com.veera.trackit.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(com.veera.trackit.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.veera.trackit.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Calendar.class.getName(), jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Iteration.class.getName(), jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Milestone.class.getName(), jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Epic.class.getName(), jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Epic.class.getName() + ".features", jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Epic.class.getName() + ".tags", jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Epic.class.getName() + ".discussions", jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Feature.class.getName(), jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Feature.class.getName() + ".stories", jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Story.class.getName(), jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Story.class.getName() + ".tasks", jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Story.class.getName() + ".children", jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Story.class.getName() + ".defects", jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Story.class.getName() + ".tags", jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Story.class.getName() + ".discussions", jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Task.class.getName(), jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Task.class.getName() + ".tags", jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Task.class.getName() + ".discussions", jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Defect.class.getName(), jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Defect.class.getName() + ".discussions", jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Project.class.getName(), jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Project.class.getName() + ".members", jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Member.class.getName(), jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Member.class.getName() + ".epics", jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Member.class.getName() + ".features", jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Member.class.getName() + ".stories", jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Member.class.getName() + ".tasks", jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Member.class.getName() + ".defects", jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Discussion.class.getName(), jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.Tag.class.getName(), jcacheConfiguration);
+            cm.createCache(com.veera.trackit.domain.ReleaseX.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

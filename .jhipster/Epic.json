@@ -1,0 +1,73 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "releaseX",
+            "otherEntityName": "releaseX",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "epic"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "milestone",
+            "otherEntityName": "milestone",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "epic"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "features",
+            "otherEntityName": "feature",
+            "otherEntityRelationshipName": "epic"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "tags",
+            "otherEntityName": "tag",
+            "otherEntityRelationshipName": "epic"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "discussions",
+            "otherEntityName": "discussion",
+            "otherEntityRelationshipName": "epic"
+        },
+        {
+            "relationshipName": "member",
+            "otherEntityName": "member",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "epicName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "state",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "note",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180326150611",
+    "entityTableName": "epic",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "mySuffix"
+}

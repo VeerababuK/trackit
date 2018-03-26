@@ -1,0 +1,67 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "epic",
+            "otherEntityName": "epic",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "milestone",
+            "otherEntityName": "milestone",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "feature"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "releaseX",
+            "otherEntityName": "releaseX",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "feature"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "stories",
+            "otherEntityName": "story",
+            "otherEntityRelationshipName": "feature"
+        },
+        {
+            "relationshipName": "member",
+            "otherEntityName": "member",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "featureName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "state",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "note",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180326150612",
+    "entityTableName": "feature",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "mySuffix"
+}

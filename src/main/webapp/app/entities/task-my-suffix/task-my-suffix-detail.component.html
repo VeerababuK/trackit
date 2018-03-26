@@ -1,0 +1,62 @@
+
+<div *ngIf="task">
+    <h2><span>Task</span> {{task.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Task Name</span></dt>
+        <dd>
+            <span>{{task.taskName}}</span>
+        </dd>
+        <dt><span>Description</span></dt>
+        <dd>
+            <span>{{task.description}}</span>
+        </dd>
+        <dt><span>State</span></dt>
+        <dd>
+            <span>{{task.state}}</span>
+        </dd>
+        <dt><span>Note</span></dt>
+        <dd>
+            <span>{{task.note}}</span>
+        </dd>
+        <dt><span>Story</span></dt>
+        <dd>
+            <div *ngIf="task.storyId">
+                <a [routerLink]="['/story-my-suffix', task.storyId]">{{task.storyId}}</a>
+            </div>
+        </dd>
+        <dt><span>Iteration</span></dt>
+        <dd>
+            <div *ngIf="task.iterationId">
+                <a [routerLink]="['/iteration-my-suffix', task.iterationId]">{{task.iterationId}}</a>
+            </div>
+        </dd>
+        <dt><span>Release X</span></dt>
+        <dd>
+            <div *ngIf="task.releaseXId">
+                <a [routerLink]="['/release-x-my-suffix', task.releaseXId]">{{task.releaseXId}}</a>
+            </div>
+        </dd>
+        <dt><span>Member</span></dt>
+        <dd>
+            <div *ngIf="task.memberId">
+                <a [routerLink]="['/member-my-suffix', task.memberId]">{{task.memberId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'task-my-suffix/'+ task.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

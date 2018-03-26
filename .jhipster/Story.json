@@ -1,0 +1,105 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "feature",
+            "otherEntityName": "feature",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "iteration",
+            "otherEntityName": "iteration",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "story"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "releaseX",
+            "otherEntityName": "releaseX",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "story"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "milestone",
+            "otherEntityName": "milestone",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "story"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "tasks",
+            "otherEntityName": "task",
+            "otherEntityRelationshipName": "story"
+        },
+        {
+            "relationshipName": "story",
+            "otherEntityName": "story",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "children",
+            "otherEntityName": "story",
+            "otherEntityRelationshipName": "story"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "defects",
+            "otherEntityName": "defect",
+            "otherEntityRelationshipName": "story"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "tags",
+            "otherEntityName": "tag",
+            "otherEntityRelationshipName": "story"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "discussions",
+            "otherEntityName": "discussion",
+            "otherEntityRelationshipName": "story"
+        },
+        {
+            "relationshipName": "member",
+            "otherEntityName": "member",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "storyName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "state",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "note",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180326150613",
+    "entityTableName": "story",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "mySuffix"
+}

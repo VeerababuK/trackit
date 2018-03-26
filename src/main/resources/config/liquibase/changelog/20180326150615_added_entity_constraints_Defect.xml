@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Defect.
+    -->
+    <changeSet id="20180326150615-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="story_id"
+                                 baseTableName="defect"
+                                 constraintName="fk_defect_story_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="story"/>
+
+        <addForeignKeyConstraint baseColumnNames="member_id"
+                                 baseTableName="defect"
+                                 constraintName="fk_defect_member_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="member"/>
+
+    </changeSet>
+</databaseChangeLog>

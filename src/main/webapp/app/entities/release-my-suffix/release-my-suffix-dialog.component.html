@@ -1,0 +1,55 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myRelease_Label">Create or edit a Release</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!release_.id">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="release_.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_releaseName">Release Name</label>
+            <input type="text" class="form-control" name="releaseName" id="field_releaseName"
+                [(ngModel)]="release_.releaseName" required/>
+            <div [hidden]="!(editForm.controls.releaseName?.dirty && editForm.controls.releaseName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.releaseName?.errors?.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_fromDate">From Date</label>
+            <div class="d-flex">
+                <input id="field_fromDate" type="datetime-local" class="form-control" name="fromDate" [(ngModel)]="release_.fromDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_toDate">To Date</label>
+            <div class="d-flex">
+                <input id="field_toDate" type="datetime-local" class="form-control" name="toDate" [(ngModel)]="release_.toDate"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" for="field_note">Note</label>
+            <input type="text" class="form-control" name="note" id="field_note"
+                [(ngModel)]="release_.note" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span>Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span>Save</span>
+        </button>
+    </div>
+</form>

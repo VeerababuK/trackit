@@ -1,0 +1,50 @@
+
+<div *ngIf="discussion">
+    <h2><span>Discussion</span> {{discussion.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Discussion Text</span></dt>
+        <dd>
+            <span>{{discussion.discussionText}}</span>
+        </dd>
+        <dt><span>Epic</span></dt>
+        <dd>
+            <div *ngIf="discussion.epicId">
+                <a [routerLink]="['/epic-my-suffix', discussion.epicId]">{{discussion.epicId}}</a>
+            </div>
+        </dd>
+        <dt><span>Story</span></dt>
+        <dd>
+            <div *ngIf="discussion.storyId">
+                <a [routerLink]="['/story-my-suffix', discussion.storyId]">{{discussion.storyId}}</a>
+            </div>
+        </dd>
+        <dt><span>Task</span></dt>
+        <dd>
+            <div *ngIf="discussion.taskId">
+                <a [routerLink]="['/task-my-suffix', discussion.taskId]">{{discussion.taskId}}</a>
+            </div>
+        </dd>
+        <dt><span>Defect</span></dt>
+        <dd>
+            <div *ngIf="discussion.defectId">
+                <a [routerLink]="['/defect-my-suffix', discussion.defectId]">{{discussion.defectId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'discussion-my-suffix/'+ discussion.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

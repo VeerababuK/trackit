@@ -1,0 +1,40 @@
+
+<div *ngIf="member">
+    <h2><span>Member</span> {{member.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Member Name</span></dt>
+        <dd>
+            <span>{{member.memberName}}</span>
+        </dd>
+        <dt><span>Type</span></dt>
+        <dd>
+            <span>{{member.type}}</span>
+        </dd>
+        <dt><span>Note</span></dt>
+        <dd>
+            <span>{{member.note}}</span>
+        </dd>
+        <dt><span>Project</span></dt>
+        <dd>
+            <div *ngIf="member.projectId">
+                <a [routerLink]="['/project-my-suffix', member.projectId]">{{member.projectId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'member-my-suffix/'+ member.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>

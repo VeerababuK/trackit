@@ -1,0 +1,44 @@
+
+<div *ngIf="tag">
+    <h2><span>Tag</span> {{tag.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Tag</span></dt>
+        <dd>
+            <span>{{tag.tag}}</span>
+        </dd>
+        <dt><span>Epic</span></dt>
+        <dd>
+            <div *ngIf="tag.epicId">
+                <a [routerLink]="['/epic-my-suffix', tag.epicId]">{{tag.epicId}}</a>
+            </div>
+        </dd>
+        <dt><span>Story</span></dt>
+        <dd>
+            <div *ngIf="tag.storyId">
+                <a [routerLink]="['/story-my-suffix', tag.storyId]">{{tag.storyId}}</a>
+            </div>
+        </dd>
+        <dt><span>Task</span></dt>
+        <dd>
+            <div *ngIf="tag.taskId">
+                <a [routerLink]="['/task-my-suffix', tag.taskId]">{{tag.taskId}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'tag-my-suffix/'+ tag.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>
